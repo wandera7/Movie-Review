@@ -9,6 +9,13 @@ class ApplicationController < Sinatra::Base
     movie.destroy
     movie.to_json
   end
+  patch '/movies/:id' do
+    movie = Movie.find(params[:id])
+    movie.update(
+      likes: params[:likes]
+    )
+    movie.to_json
+  end
 
 
 end
