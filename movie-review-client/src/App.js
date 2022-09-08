@@ -19,7 +19,18 @@ function App() {
   function handleClick() {
     setShowForm((showForm) => !showForm)
   }
- 
+  //Adds movie object
+  function handleAddMovieReview(reviewObj){
+    setMovies((prevValue)=>{
+      return [...prevValue,reviewObj]
+    })
+  }
+  //Deletes movie object
+  function handleDeleteMovieReview(id){
+    const updatedMovieReviews=movies.filter((movie)=>movie.id !==id)
+    setMovies(updatedMovieReviews)
+  }
+
 
   return (
     <>
