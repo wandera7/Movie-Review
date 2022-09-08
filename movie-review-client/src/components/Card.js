@@ -8,54 +8,68 @@ import { Stack,IconButton,Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
-function MovieCard(){
-  const {id,name,desc,image_url,likes}=movie
-  const[words,setWords]=React.useState(true)
-  const [likeCount,setLikeCount]=React.useState(likes)
-  const [styleLike,setStyleLike]=React.useState(false)
-
+function MovieCard({movie,onUpdate,onDelete}) {
+    const {id,name,desc,image_url,likes}=movie
+    const[words,setWords]=React.useState(true)
+    const [likeCount,setLikeCount]=React.useState(likes)
+    const [styleLike,setStyleLike]=React.useState(false)
 
     function handleLike(){
-        setStyleLike(!styleLike)
-        setLikeCount((likes)=>likes+1)
-        fetch(`http://localhost:9292/movies/${id}`,{
-          method:'PATCH',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            likes:likeCount
+      setStyleLike(!styleLike)
+      setLikeCount((likes)=>likes+1)
+      fetch(`http://localhost:9292/movies/${id}`,{
+        method:'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          likes:likeCount
 
-        })})
-        .then((res)=>res.json())
-        .then((data)=>onUpdate(data))
+      })})
+      .then((res)=>res.json())
+      .then((data)=>onUpdate(data))
     }
+
     function handleDelete(){
-        fetch(`http://localhost:9292/movies/${id}`,{
-          method:'DELETE'
-        })
-        .then((res)=>res.json())
-        .then(()=>onDelete(id))
+      fetch(`http://localhost:9292/movies/${id}`,{
+        method:'DELETE'
+      })
+      .then((res)=>res.json())
+      .then(()=>onDelete(id))
     }
 
 
+    return (
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          alt="green iguana"
+          height="300"
+          image={image_url}
+        />
+        <CardContent>
+          <Typography className='name' gutterBottom variant="h5" component="div">
+            {name.toUpperCase()}
+          </Typography>
+          <p className='genre'></p>
+          <p className='desc'>
+            {words?`${desc.slice(0,30)}...`:desc}<button className='btn' onClick={()=>{setWords(!words)}}>{words?'Read more':'Read Less'}</button>
+          </p>
+          <h4><span>{likeCount}</span> likes</h4>
+        </CardContent>
+        <CardActions>
+          <Stack  spacing={2} direction="row"  >
+          <Tooltip title="like">
+          <IconButton  style={{color:styleLike?'blueviolet':null}} onClick={handleLike}><ThumbUpIcon/>
+          </IconButton>
+          </Tooltip>
+          <Tooltip title="delete">
+          <IconButton  onClick={handleDelete}><DeleteIcon/></IconButton>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    return(
-        <div>
-
-        </div>
-    )
-}
-export default MovieCard
+          </Tooltip>
+          </Stack>
+        </CardActions>
+      </Card>
+    );
+  }
+  export default MovieCard
