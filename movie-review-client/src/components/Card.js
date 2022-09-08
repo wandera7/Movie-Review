@@ -29,9 +29,16 @@ function MovieCard(){
         })})
         .then((res)=>res.json())
         .then((data)=>onUpdate(data))
-      }
+    }
+    function handleDelete(){
+        fetch(`http://localhost:9292/movies/${id}`,{
+          method:'DELETE'
+        })
+        .then((res)=>res.json())
+        .then(()=>onDelete(id))
+    }
 
-    
+
 
 
 
