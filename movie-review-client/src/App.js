@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import './App.css'
+import MovieGrid from './components/Grid'
+import Header from './components/Header'
+import MovieForm from './components/MovieForm'
 
 function App() {
+  const [movies,setMovies]=useState([])
+  const [showForm,setShowForm]=useState(false)
+  useEffect(()=>{
+    fetch(`http://localhost:9292/movies`)
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data)
+      setMovies(data)})
+  },[])
+
+  function handleClick() {
+    setShowForm((showForm) => !showForm)
+  }
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header/>
+    {showForm?<MovieForm onAdd={handleAddMovieReview} />:null}
+    <button className="addbtn" onClick={handleClick}>{showForm?'Close Form':'New  Review Form'}</button>
+    <MovieGrid onDelete={handleDeleteMovieReview} onUpdate={handleUpdateMovieReview} movies={movies}/>
+    </>
   );
 }
 
