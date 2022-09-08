@@ -4,6 +4,11 @@ class ApplicationController < Sinatra::Base
     movies=Movie.all
     movies.to_json(include: :genre)
   end
-  
+  delete '/movies/:id' do
+    movie=Movie.find(params[:id])
+    movie.destroy
+    movie.to_json
+  end
+
 
 end
