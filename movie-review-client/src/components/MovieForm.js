@@ -35,7 +35,50 @@ function  MovieForm({onAdd}){
 
 
 
-  
+  return (
+    <div className="container">
+      <form className="add-movie-form" onSubmit={handleSubmit} >
+        <p className='h3'>Create new movie review</p>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter the movie's name..."
+          className="input-text"
+          value={movieForm.name}
+         onChange={handleChange}
+        />
+        <br />
+        <input
+          type="text"
+          name="image"
+          placeholder="Paste movie's image address..."
+          className="input-text"
+          value={movieForm.image}
+          onChange={handleChange}
+        />
+        <br />
+        <textarea
+          name="desc"
+          rows="4"
+          className='moviedesc'
+          placeholder="Enter movie  description.."
+          value={movieForm.desc}
+          cols="67"
+          onChange={handleChange}
+          />
+        <br />
+        <label className='label'>
+        Genre:
+        <select name="genre"  value={movieForm.genre} onChange={handleChange} >
+          <option value='1'>Action</option>
+          <option value='2'>Crime</option>
+          <option value='3'>Animation</option>
+          <option value='4'>Comedy</option>
+        </select>
+       </label>
+        <button className="submit">Publish Review</button>
+      </form>
+    </div>
 
   )
 }
