@@ -3,7 +3,6 @@
   margin: 0;
 }
 
-
 #movie-header {
   display: flex;
   justify-content: center;
@@ -12,8 +11,6 @@
   height: 7rem;
   padding: 1rem;
 }
-
-
 
 #movie-header img {
   height: 8rem;
@@ -27,7 +24,6 @@
   color:blueviolet;
   background-color: white;
   cursor: pointer;
-
 }
 .desc{
   line-height: 1.1rem;
@@ -80,8 +76,6 @@
   font-family: monospace;
   margin: 3px;
   width: 60%;
-
-
 }
 
 .addbtn{
