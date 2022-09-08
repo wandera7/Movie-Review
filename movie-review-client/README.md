@@ -2,10 +2,13 @@
 
 ## Available Scripts
 
-In this directory, you can run:
+In this directory,  run:
 
 ### `npm install`
-- This installs all the necessary dependecies
+- To installs all the necessary dependecies
+
+### `npm install @mui/icons-material`
+-Install MUI components
 
 - You can then run to start the app
 ### `npm start`
