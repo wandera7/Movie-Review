@@ -9,8 +9,8 @@
 - I hope you'll love it.
 
 ## Link
-- Click the link below to visit WANDERABUZZ
->https://willowy-alpaca-4bd37c.netlify.app/
+- Click the link below to see MOVIEREVIEW
+>https://www.loom.com/share/8642275b3d8d4f0991abf0df1ee1bcc8
 
 ## Technologies
 
