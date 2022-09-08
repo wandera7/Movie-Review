@@ -65,7 +65,6 @@ function MovieCard({movie,onUpdate,onDelete}) {
           </Tooltip>
           <Tooltip title="delete">
           <IconButton  onClick={handleDelete}><DeleteIcon/></IconButton>
-
           </Tooltip>
           </Stack>
         </CardActions>
