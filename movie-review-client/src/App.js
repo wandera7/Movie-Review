@@ -30,7 +30,17 @@ function App() {
     const updatedMovieReviews=movies.filter((movie)=>movie.id !==id)
     setMovies(updatedMovieReviews)
   }
-
+  //Updates movie likes
+  function handleUpdateMovieReview(updatedMovieObj){
+    const updatedMovies = movies.map((movie) => {
+      if (movie.id === updatedMovieObj.id) {
+        return updatedMovieObj
+      } else {
+        return movie
+      }
+    });
+    setMovies(updatedMovies)
+  }
 
   return (
     <>
