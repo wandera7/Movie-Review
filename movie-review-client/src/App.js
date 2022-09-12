@@ -9,7 +9,7 @@ function App() {
   const [movies,setMovies]=useState([])
   const [showForm,setShowForm]=useState(false)
   useEffect(()=>{
-    fetch(`http://localhost:9292/movies`)
+    fetch(`https://wandera-movies.herokuapp.com/movies`)
     .then((res)=>res.json())
     .then((data)=>{
       console.log(data)
