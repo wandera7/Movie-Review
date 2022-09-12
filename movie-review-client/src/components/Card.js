@@ -17,7 +17,7 @@ function MovieCard({movie,onUpdate,onDelete}) {
     function handleLike(){
       setStyleLike(!styleLike)
       setLikeCount((likes)=>likes+1)
-      fetch(`http://localhost:9292/movies/${id}`,{
+      fetch(`https://wandera-movies.herokuapp.com/movies/${id}`,{
         method:'PATCH',
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +31,7 @@ function MovieCard({movie,onUpdate,onDelete}) {
     }
 
     function handleDelete(){
-      fetch(`http://localhost:9292/movies/${id}`,{
+      fetch(`https://wandera-movies.herokuapp.com/movies/${id}`,{
         method:'DELETE'
       })
       .then((res)=>res.json())
