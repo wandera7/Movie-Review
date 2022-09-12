@@ -13,7 +13,7 @@ function  MovieForm({onAdd}){
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch("http://localhost:9292/movies", {
+    fetch("https://wandera-movies.herokuapp.com/movies", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
